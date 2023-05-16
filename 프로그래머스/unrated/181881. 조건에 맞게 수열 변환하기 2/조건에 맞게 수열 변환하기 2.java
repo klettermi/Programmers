@@ -20,7 +20,7 @@ class Solution {
                 break;
             }
             x++;
-            arr = Arrays.copyOf(arr_func(arr), arr_func(arr).length);
+            arr = arr_func(arr);
         }
         return answer;
     }
