@@ -1,35 +1,29 @@
 import java.io.*;
 import java.util.*;
 public class Main {
+    public static void main(String[] args) throws IOException {
+       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       StringBuffer sb = new StringBuffer();
+       Stack<Integer> st = new Stack<>();
+       ArrayList<Integer> arr = new ArrayList<>();
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Stack <Integer> st = new Stack<>();
-        ArrayList <String> ans = new ArrayList<>();
-        int n = sc.nextInt();
-        int[] a = new int[n + 1]; // 0을 사용하지 않기 때문에 +1을 해줌
-        int m = 1;
-        for (int i = 1; i <= n; i++) {
-            a[i] = sc.nextInt();
-        }
+       int n = Integer.parseInt(br.readLine());
+       for(int i = 0; i < n; i++) // 입력된 수열
+           arr.add(Integer.parseInt(br.readLine()));
 
-        for (int i = 1; i <= n; i++) {
-            st.push(i);
-            ans.add("+");
-            while (!st.empty() && st.peek() == a[m]) {
-                st.pop();
-                ans.add("-");
-                m++;
-            }
-        }
+       int idx = 0;
+       for(int i = 1; i <= n; i++){
+           st.push(i);
+           sb.append("+").append("\n");
+           while(!st.isEmpty() && Objects.equals(st.peek(), arr.get(idx))){
+               st.pop();
+               sb.append("-").append("\n");
+               idx++;
+           }
+       }
 
-        if (st.empty()) {
-            for (String s : ans) {
-                System.out.println(s);
-            }
-        } else {
-            System.out.println("NO");
-        }
-
+       if(st.isEmpty())
+           System.out.println(sb);
+       else System.out.println("NO");
     }
 }
