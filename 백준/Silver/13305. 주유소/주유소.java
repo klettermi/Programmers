@@ -20,12 +20,12 @@ public class Main {
             city[i] = Integer.parseInt(st.nextToken());
         }
 
-        int min = city[0];
-        int sum = city[0] * dis[0];
+        Long min = (long) city[0];
+        Long sum = ((long) city[0] * dis[0]);
         for(int i = 1; i < n-1; i++){
             if(min > city[i]){
-                min = city[i];
-                sum += city[i] * dis[i];
+                min = (long) city[i];
+                sum += (long) city[i] * dis[i];
             }else{
                 sum += min * dis[i];
             }
